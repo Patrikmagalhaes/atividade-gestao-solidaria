@@ -210,3 +210,8 @@ footer {
   padding: var(--space-2);
   margin-top: var(--space-4);
 }
+
+img{
+  width: 100%;
+  max-width: 600px;
+}
