@@ -1,73 +1,212 @@
-* {
+/* ===============================
+   🎨 Design System
+==================================*/
 
-  box-sizing: border-box;
+/* 🎨 Paleta de cores */
+:root {
+  --color-primary: #2a7b8e;
+  --color-primary-light: #3e9fb4;
+  --color-secondary: #f4a261;
+  --color-secondary-dark: #e76f51;
+  --color-neutral-100: #ffffff;
+  --color-neutral-200: #f4f4f4;
+  --color-neutral-400: #cccccc;
+  --color-neutral-600: #666666;
+  --color-neutral-800: #333333;
 }
 
+/* 🧱 Tipografia (hierarquia) */
+:root {
+  --font-family: "Arial", sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 28px;
+}
+
+/* 📏 Espaçamentos (8px scale) */
+:root {
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+}
+
+/* ===============================
+   🌐 Estilos Globais
+==================================*/
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-family);
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-800);
   margin: 0;
-  padding: 0;
-  background-color: #fafafa;
-  color: #333;
-
 }
 
-header,
-footer {
-  background-color: #2a7b8e;
-  color: white;
-  padding: 1rem;
-  text-align: center;
+/* ===============================
+   🧭 Cabeçalho e Navegação
+==================================*/
+header {
+  background-color: var(--color-primary);
+  color: var(--color-neutral-100);
+  padding: var(--space-2);
 }
 
 nav ul {
+  display: flex;
+  justify-content: center;
   list-style: none;
   padding: 0;
+  gap: var(--space-2);
 }
 
-nav ul li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: white;
+nav a {
+  color: var(--color-neutral-100);
   text-decoration: none;
+  font-weight: bold;
 }
 
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   📱 Layout Principal
+==================================*/
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  padding: var(--space-3);
+}
+
+section {
+  grid-column: span 6;
+  background-color: var(--color-neutral-100);
+  padding: var(--space-3);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  section {
+    grid-column: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: var(--space-2);
+  }
+
+  .container-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+  .container-home {
+    display: flex;
+
+    justify-content: center;
+  }
+/* ===============================
+   🧩 Componentes
+==================================*/
+
+/* Botões */
+button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-primary-light);
+}
+
+button:disabled {
+  background-color: var(--color-neutral-400);
+  cursor: not-allowed;
+}
+
+/* Cards */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-neutral-100);
+  border-radius: 10px;
+  padding: var(--space-3);
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulários */
 form {
   max-width: 600px;
-  margin: 2rem auto;
-  padding: 1rem;
-  background: white;
+  width: 100%;
+  margin: var(--space-4) auto;
+  padding: var(--space-3);
+  background-color: var(--color-neutral-100);
   border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 label {
   display: block;
-  margin-top: 10px;
+  margin-top: var(--space-2);
 }
 
 input {
   width: 100%;
-  padding: 8px;
+  padding: var(--space-1);
+  border: 1px solid var(--color-neutral-400);
+  border-radius: 5px;
   margin-top: 4px;
   box-sizing: border-box;
 }
 
-button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #2a7b8e;
+/* Badges e Tags */
+.badge {
+  display: inline-block;
+  background-color: var(--color-secondary);
   color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: var(--font-size-sm);
 }
 
+/* Alerts */
+.alert {
+  background-color: var(--color-secondary-dark);
+  color: white;
+  padding: var(--space-2);
+  border-radius: 5px;
+  margin-bottom: var(--space-2);
+}
 
-
-.container-main-home {
-display: flex;
-justify-content: center;
+/* ===============================
+   ⚙️ Footer
+==================================*/
+footer {
+  background-color: var(--color-primary);
+  color: var(--color-neutral-100);
+  text-align: center;
+  padding: var(--space-2);
+  margin-top: var(--space-4);
 }
